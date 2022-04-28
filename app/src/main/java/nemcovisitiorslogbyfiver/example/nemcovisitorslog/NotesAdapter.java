@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,27 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         holder.details.setText(modal.getName());
 
 
+        holder.delte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.courseModalArrayList.remove(position);
+                notifyItemRemoved(position);
+
+
+
+                SharedPreferences preferences = context.getSharedPreferences("shared preferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor mEditor = preferences.edit();
+                Gson gson = new Gson();
+
+                String jsonString = gson.toJson(courseModalArrayList);
+                mEditor.putString("courses", jsonString);
+                mEditor.apply();
+            }
+
+
+
+        });
+
 
     }
 
@@ -55,12 +77,16 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
         // creating variables for our views.
         private TextView details;
+        private ImageView delte;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             // initializing our views with their ids.
             details = itemView.findViewById(R.id.fav_user_details);
+            delte = itemView.findViewById(R.id.fav_user_delete);
+
         }
     }
 }

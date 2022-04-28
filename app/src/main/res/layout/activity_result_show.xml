@@ -16,19 +16,29 @@
 
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/export_data"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="18sp"
-            android:background="@android:color/holo_red_light"
-            android:padding="10dp"
-            android:layout_margin="5dp"
-            android:textAllCaps="false"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:text="Export into XLXS"/>
+            app:cardCornerRadius="12dp"
+            android:layout_marginTop="20dp"
+            app:cardElevation="15sp"
+            android:layout_centerInParent="true">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/export_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:background="#038510"
+                android:padding="10dp"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:text="Export into XLXS"/>
+
+
+        </androidx.cardview.widget.CardView>
+
 
 
 
